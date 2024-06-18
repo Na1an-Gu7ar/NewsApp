@@ -10,7 +10,6 @@ const News = ({ country, pageSize, category }) => {
   const totalResults = useSelector((state) => state.news.totalResults);
   const status = useSelector((state) => state.news.status);
   const page = useSelector((state) => state.page.page);
-  const progress = useSelector((state) => state.page.progress);
 
   useEffect(() => {
     document.title = "NewsApp";
@@ -22,16 +21,18 @@ const News = ({ country, pageSize, category }) => {
 
   const handlePrevClick = () => {
     dispatch(decrementPage());
+    setProgress(50);
   };
 
   const handleNextClick = () => {
     if (page + 1 <= Math.ceil(totalResults / pageSize)) {
       dispatch(incrementPage());
+      setProgress(50);
     }
   };
 
   if (status === 'loading') {
-    setProgress(100);
+    setProgress(50);
   }
 
   if (status === 'failed') {

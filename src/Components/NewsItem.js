@@ -15,7 +15,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date, source 
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
             <p className="card-text"><small className="text-muted">By {!author ? "unknown" : author} on {new Date(date).toGMTString()}</small></p>
-            <a href={newsUrl} target='_blank' className="btn btn-sm btn-success">Read More</a>
+            <a href={newsUrl} className="btn btn-sm btn-success">Read More</a>
           </div>
         </div>
       </div>
