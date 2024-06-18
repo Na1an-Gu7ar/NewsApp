@@ -57,7 +57,7 @@ const News = ({ country, pageSize, category }) => {
             </div>
           ))
         ) : (
-          <p>No articles available</p>
+          <p className='text-center'>No articles available</p>
         )}
         </div>
       </div>
