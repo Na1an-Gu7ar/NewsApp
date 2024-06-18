@@ -6,7 +6,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date, source 
       <div className='my-3'>
         <div className="card" style={{ height: '30rem' }}>
           <div style={{ display: 'flex', justifyContent: 'flex-end', position: 'absolute', right: '0' }}>
-            <span class=" badge rounded-pill bg-warning">
+            <span className=" badge rounded-pill bg-warning">
               {source}
             </span>
           </div>

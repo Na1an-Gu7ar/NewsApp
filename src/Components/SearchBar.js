@@ -26,7 +26,7 @@ const SearchBar = ({ country, category, pageSize }) => {
                 />
                 {query && (
                     <ul className='d-flex'>
-                        {articles.map((item) => (
+                        {Array.isArray(articles) && articles.length > 0 ? ( articles.map((item) => (
                             <div className="col-md-4" key={item.url}>
                                 <NewsItem
                                     title={item.title ? item.title.slice(0, 45) : ""}
@@ -38,7 +38,10 @@ const SearchBar = ({ country, category, pageSize }) => {
                                     source={item.source.name}
                                 />
                             </div>
-                        ))}
+                        ))
+                    ) : (
+                        <p className='text-center'>No articles</p>
+                    )}
                     </ul>
                 )}
             </div>
