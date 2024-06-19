@@ -30,7 +30,7 @@ const App = (props) => {
         </div>
       </div>
       {/* {selectedCategory === '' ? "" : <News country={props.country} category={selectedCategory} numResults={props.numResults} setProgress={setProgress} />} */}
-      <News setProgress={setProgress} country={props.country} numResults={props.numResults} category="general" />
+      <News setProgress={setProgress} country={props.country} numResults={props.numResults} category="" />
     </div>
   );
 };
