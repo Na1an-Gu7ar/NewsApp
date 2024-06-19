@@ -2,12 +2,12 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchNews } from '../redux/newsSlice';
 
-const FilterCategory = ({ categories, country, pageSize }) => {
+const FilterCategory = ({ categories, country, numResults }) => {
   const dispatch = useDispatch();
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.target.value;
-    dispatch(fetchNews({ country, category: selectedCategory, page: 1, pageSize, query: '' }));
+    dispatch(fetchNews({ country, category: selectedCategory, page: 1, numResults, query: '' }));
   };
 
   return (

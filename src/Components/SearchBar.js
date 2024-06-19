@@ -3,14 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchNews } from '../redux/newsSlice';
 import NewsItem from './NewsItem';
 
-const SearchBar = ({ country, category, pageSize }) => {
+const SearchBar = ({ country, category, numResults }) => {
     const [query, setQuery] = useState('');
     const dispatch = useDispatch();
     const articles = useSelector((state) => state.news.articles);
 
     const handleInputChange = (e) => {
         setQuery(e.target.value);
-        dispatch(fetchNews({ country, category, page: 1, pageSize, query: e.target.value }));
+        dispatch(fetchNews({ country, category, page: 1, numResults, query: e.target.value }));
     };
 
     return (

@@ -4,7 +4,7 @@ import { fetchNews } from '../redux/newsSlice';
 import { incrementPage, decrementPage, setProgress, resetProgress } from '../redux/pagination';
 import NewsItem from './NewsItem';
 
-const News = ({ country, pageSize, category }) => {
+const News = ({ country, numResults, category }) => {
   const dispatch = useDispatch();
   const articles = useSelector((state) => state.news.articles);
   const totalResults = useSelector((state) => state.news.totalResults);
@@ -14,10 +14,10 @@ const News = ({ country, pageSize, category }) => {
   useEffect(() => {
     document.title = "NewsApp";
     dispatch(setProgress(10));
-    dispatch(fetchNews({ country, category, page, pageSize }))
+    dispatch(fetchNews({ country, category, page, numResults }))
       .then(() => dispatch(setProgress(100)))
       .finally(() => dispatch(resetProgress()));
-  }, [dispatch, country, category, page, pageSize]);
+  }, [dispatch, country, category, page, numResults]);
 
   const handlePrevClick = () => {
     dispatch(decrementPage());
@@ -25,7 +25,7 @@ const News = ({ country, pageSize, category }) => {
   };
 
   const handleNextClick = () => {
-    if (page + 1 <= Math.ceil(totalResults / pageSize)) {
+    if (page + 1 <= Math.ceil(totalResults / numResults)) {
       dispatch(incrementPage());
       setProgress(50);
     }
@@ -49,7 +49,7 @@ const News = ({ country, pageSize, category }) => {
               <NewsItem
                 title={`${element.title ? element.title.slice(0, 45) : ""}...`}
                 description={`${element.description ? element.description.slice(0, 88) : ""}...`}
-                imageUrl={element.urlToImage}
+                imageUrl={element.imageUrl}
                 newsUrl={element.url}
                 author={element.author}
                 date={element.publishedAt}
@@ -64,7 +64,7 @@ const News = ({ country, pageSize, category }) => {
       </div>
       <div className="container d-flex justify-content-between">
         <button disabled={page <= 1} type="button" className="btn btn-danger" onClick={handlePrevClick}>&larr; Previous</button>
-        <button disabled={page + 1 > Math.ceil(totalResults / pageSize)} type="button" className="btn btn-warning" onClick={handleNextClick}>Next &rarr;</button>
+        <button disabled={page + 1 > Math.ceil(totalResults / numResults)} type="button" className="btn btn-warning" onClick={handleNextClick}>Next &rarr;</button>
       </div>
     </>
   );

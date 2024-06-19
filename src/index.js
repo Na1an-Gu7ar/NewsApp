@@ -10,7 +10,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App country="in" pageSize={8} />
+      <App country="in" numResults={8} />
     </React.StrictMode>
   </Provider>
 );
