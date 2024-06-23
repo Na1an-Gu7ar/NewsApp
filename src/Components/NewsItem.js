@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewsItem = ({ title, description, imageUrl, newsUrl, author, date, source }) => {
+const NewsItem = ({ title, description, urlToImage, newsUrl, author, date, source }) => {
   return (
     <div>
       <div className='my-3'>
@@ -10,7 +10,7 @@ const NewsItem = ({ title, description, imageUrl, newsUrl, author, date, source 
               {source}
             </span>
           </div>
-          <img style={{maxHeight: "12rem"}} src={!imageUrl ? "" : imageUrl} className="card-img-top rounded mx-auto d-block" alt="..." />
+          <img style={{maxHeight: "12rem"}} src={!urlToImage ? "" : urlToImage} className="card-img-top rounded mx-auto d-block" alt="..." />
           <div className="card-body" >
             <h5 className="card-title">{title}</h5>
             <p className="card-text">{description}</p>
